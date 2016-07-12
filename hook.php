@@ -7,9 +7,9 @@ $pull_branch = $_SERVER['BRANCH_NAME'];
 function pullMaster($payload){
   $branch = isset($payload['payload']['branch'])? $payload['payload']['branch'] : null;
   $subject = isset($payload['payload']['all_commit_details'][0]['subject'])? $payload['payload']['all_commit_details'][0]['subject'] : null;
-  if ($branch === $pull_branch){
+  if ($branch === 'master'){
       `sudo -u deploy sh /home/deploy/pull.sh`;
-      file_put_contents('hook.log', date("[Y-m-d H:i:s]")." ".$_SERVER['REMOTE_ADDR']." git pulled: ".$subject."\n", FILE_APPEND|LOCK_EX);
+      file_put_contents('hook.log', date("[Y-m-d H:i:s]")." ".$_SERVER['REMOTE_ADDR']." git pulled: ".$pull_branch."\n", FILE_APPEND|LOCK_EX);
   }
 }
 
