@@ -1,8 +1,8 @@
 <?php
 
-$hookSecret = (getenv('SECRET') !== false)? getenv('SECRET') : null;
-$mode = (getenv('MODE') !== false)? getenv('MODE') : null;
-$pull_branch = (getenv('BRANCH_NAME') !== false)? getenv('BRANCH_NAME') : null;
+$hookSecret = $_SERVER['SECRET'];
+$mode = $_SERVER['MODE'];
+$pull_branch = $_SERVER['BRANCH_NAME'];
 
 function pullMaster($payload){
   $branch = isset($payload['payload']['branch'])? $payload['payload']['branch'] : null;
