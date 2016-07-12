@@ -13,4 +13,4 @@ deployment:
 
 notify:
   webhooks:
-    - url: http://shoku.zenbase.jp/ci/hook.php?secret=${SECRET}
+    - url: http://shoku.zenbase.jp/ci/hook.php?secret=\${SECRET}
