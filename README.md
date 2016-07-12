@@ -10,7 +10,8 @@
 4. hook.phpでデプロイ処理
 
 ##Git
-デプロイをおこなうサーバーからのgit接続時のportは*443*に変更
+デプロイをおこなうサーバーからのgit接続時のportは**443**に変更
+
   <https://help.github.com/articles/using-ssh-over-the-https-port/>
 
 ##CircleCi
