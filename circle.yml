@@ -3,7 +3,7 @@ machine:
 
 test:
   override:
-    - echo Test
+    - exit 1
 
 deployment:
   production:
