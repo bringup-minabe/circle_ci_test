@@ -10,3 +10,7 @@ deployment:
     branch: master
     commands:
       - sh sh/deploy_master.sh
+
+notify:
+  webhooks:
+    - url: http://shoku.zenbase.jp/ci/hook_json.php
