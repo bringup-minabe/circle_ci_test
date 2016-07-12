@@ -1,10 +1,10 @@
 <?php
 
 $hookSecret = getenv('CI_SECRET');
+$mode = getenv('CI_MODE');
 
 function pullMaster($payload){
   //get env
-  $mode = getenv('CI_MODE');
   $pull_branch = getenv('CI_BRANCH_NAME');
   //set payload
   $branch = isset($payload['payload']['branch'])? $payload['payload']['branch'] : null;
