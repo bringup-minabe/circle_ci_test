@@ -1,13 +1,9 @@
 machine:
   timezone: Asia/Tokyo
 
-dependencies:
-  pre:
-    - sudo pip install awscli
-
 test:
   override:
-    - echo Hello World
+    - echo Test
 
 deployment:
   production:
