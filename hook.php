@@ -1,8 +1,8 @@
 <?php
 
-$hookSecret = $_SERVER['SECRET'];
-$mode = $_SERVER['MODE'];
-$pull_branch = $_SERVER['BRANCH_NAME'];
+$hookSecret = $_SERVER['CI_SECRET'];
+$mode = $_SERVER['CI_MODE'];
+$pull_branch = $_SERVER['CI_BRANCH_NAME'];
 
 function pullMaster($payload){
   $branch = isset($payload['payload']['branch'])? $payload['payload']['branch'] : null;
