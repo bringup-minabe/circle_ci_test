@@ -87,7 +87,7 @@ switch($mode){
 
   default:
     checkRequest();
-    checkSecret($hookSecret);
+    //checkSecret($hookSecret);
     // checkContentType();
     $payload = json_decode(getJson(), true);
     triggerEvent($payload);
