@@ -2,5 +2,5 @@
 
 ##動作流れ
 1.GitHubへPUSH
- 2.CircleCiがPUSHを検知し、ビルド開始
+  2.CircleCiがPUSHを検知し、ビルド開始
 
