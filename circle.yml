@@ -7,4 +7,4 @@ test:
 
 notify:
   webhooks:
-    - url: http://shoku.zenbase.jp/ci/hook.php?secret=jndo7IJNpom1ij0noskndp1o
+    - url: http://shoku.zenbase.jp/ci/hook.php?secret=$DEPLOY_SECRET
