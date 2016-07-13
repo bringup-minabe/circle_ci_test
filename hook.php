@@ -3,6 +3,9 @@
 $hookSecret = getenv('CI_SECRET');
 $mode = getenv('CI_MODE');
 
+$log_path = (getenv('CI_LOG_PATH') !== false)? getenv('CI_LOG_PATH') : null;
+define('LOG_PATH', getenv('CI_LOG_PATH'));
+
 function pullMaster($payload){
   //get env
   $pull_branch = getenv('CI_BRANCH_NAME');
@@ -12,7 +15,7 @@ function pullMaster($payload){
   
   if ($branch === $pull_branch){
       `sudo -u deploy sh /home/deploy/pull.sh`;
-      file_put_contents('hook.log', date("[Y-m-d H:i:s]")." ".$_SERVER['REMOTE_ADDR']." git pulled: ".$subject."\n", FILE_APPEND|LOCK_EX);
+      file_put_contents(LOG_PATH.'hook.log', date("[Y-m-d H:i:s]")." ".$_SERVER['REMOTE_ADDR']." git pulled: ".$subject."\n", FILE_APPEND|LOCK_EX);
   }
 }
 
@@ -34,7 +37,7 @@ function checkRequest(){
 
 function checkSecret($hookSecret){
   $secret = filter_input(INPUT_GET, 'secret');
-  if ($hookSecret !== NULL) {
+  if ($hookSecret !== null) {
     if (empty($secret)) {
       throw new \Exception('secret none.');
     }
@@ -85,7 +88,7 @@ switch($mode){
   case 'debug':
     echo "debug mode";
     `sudo -u deploy sh /home/deploy/test1.sh`;
-    file_put_contents(dirname(__FILE__).'/hook.log', date("[Y-m-d H:i:s]")." ".$_SERVER['REMOTE_ADDR']." git pulled: debug mode\n", FILE_APPEND|LOCK_EX);
+    file_put_contents(LOG_PATH.'hook.log', date("[Y-m-d H:i:s]")." ".$_SERVER['REMOTE_ADDR']." git pulled: debug mode\n", FILE_APPEND|LOCK_EX);
   break;
 
   default:
