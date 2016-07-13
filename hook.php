@@ -15,7 +15,7 @@ function pullMaster($payload){
   
   if ($branch === $pull_branch){
       `sudo -u deploy sh /home/deploy/pull.sh`;
-      file_put_contents(LOG_PATH.'hook.log', date("[Y-m-d H:i:s]")." ".$_SERVER['REMOTE_ADDR']." git pulled: ".$_SERVER['CONTENT_TYPE']."\n", FILE_APPEND|LOCK_EX);
+      file_put_contents(LOG_PATH.'hook.log', date("[Y-m-d H:i:s]")." ".$_SERVER['REMOTE_ADDR']." git pulled: ".$subject."\n", FILE_APPEND|LOCK_EX);
   }
 }
 
@@ -50,8 +50,6 @@ function checkSecret($hookSecret){
 function checkContentType() {
   if (!isset($_SERVER['CONTENT_TYPE'])) {
     throw new \Exception("Missing HTTP 'Content-Type' header.");
-  } elseif (!isset($_SERVER['HTTP_X_GITHUB_EVENT'])) {
-    throw new \Exception("Missing HTTP 'X-Github-Event' header.");
   }
 }
 
@@ -94,7 +92,7 @@ switch($mode){
   default:
     checkRequest();
     checkSecret($hookSecret);
-    // checkContentType();
+    checkContentType();
     $payload = json_decode(getJson(), true);
     triggerEvent($payload);
 }
