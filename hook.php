@@ -15,12 +15,11 @@ function pullMaster($payload){
   
   if ($branch === $pull_branch){
       `sudo -u deploy sh /home/deploy/pull.sh`;
-      file_put_contents(LOG_PATH.'hook.log', date("[Y-m-d H:i:s]")." ".$_SERVER['REMOTE_ADDR']." git pulled: ".$subject."\n", FILE_APPEND|LOCK_EX);
+      file_put_contents(LOG_PATH.'hook.log', date("[Y-m-d H:i:s]")." ".$_SERVER['REMOTE_ADDR']." git pulled: ".$_SERVER['CONTENT_TYPE']."\n", FILE_APPEND|LOCK_EX);
   }
 }
 
 set_error_handler(function($severity, $message, $file, $line) {
-  file_put_contents(LOG_PATH.'hook_error.log', date("[Y-m-d H:i:s]")." ".$message." ".$file." ".$line."\n", FILE_APPEND|LOCK_EX);
   throw new \ErrorException($message, 0, $severity, $file, $line);
 });
 
