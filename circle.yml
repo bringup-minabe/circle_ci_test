@@ -3,13 +3,7 @@ machine:
 
 test:
   override:
-    - exit 1
-
-deployment:
-  production:
-    branch: master
-    commands:
-      - sh sh/deploy_master.sh
+    - exit 0
 
 notify:
   webhooks:
