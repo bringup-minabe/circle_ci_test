@@ -21,7 +21,7 @@ PROJECT SETTINGS -> Environment Variables でSECRET設定
     SetEnv CI_SECRET hogehoge #CircleCiで設定したSECRET
     SetEnv CI_MODE normal #debugでdebugモード
     SetEnv CI_BRANCH_NAME master #対象ブランチ
-    SetEnv CI_LOG_PATH /home/deploy/ #ログ保存先パス
+    SetEnv CI_LOG_PATH logs/ #ログ保存先パス
 
 ##php.ini
 環境変数を使えるようにphp.iniの設定変更
