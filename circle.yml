@@ -3,7 +3,7 @@ machine:
 
 test:
   override:
-    - exit 0
+    - exit 1
 
 deployment:
   production:

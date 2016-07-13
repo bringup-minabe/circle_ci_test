@@ -20,6 +20,7 @@ function pullMaster($payload){
 }
 
 set_error_handler(function($severity, $message, $file, $line) {
+  file_put_contents(LOG_PATH.'hook_error.log', date("[Y-m-d H:i:s]")." ".$message." ".$file." ".$line."\n", FILE_APPEND|LOCK_EX);
   throw new \ErrorException($message, 0, $severity, $file, $line);
 });
 
