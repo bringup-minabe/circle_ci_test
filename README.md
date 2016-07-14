@@ -14,11 +14,8 @@
 
   <https://help.github.com/articles/using-ssh-over-the-https-port/>
 
-##CircleCi
-PROJECT SETTINGS -> Environment Variables でSECRET設定
-
 ##.htaccess
-    SetEnv CI_SECRET hogehoge #CircleCiで設定したSECRET
+    SetEnv CI_SECRET hogehoge #ymlで設定したsecret
     SetEnv CI_MODE normal #debugでdebugモード
     SetEnv CI_BRANCH_NAME master #対象ブランチ
     SetEnv CI_LOG_PATH logs/ #ログ保存先パス
