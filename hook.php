@@ -7,8 +7,10 @@ $log_path = (getenv('CI_LOG_PATH') !== false)? getenv('CI_LOG_PATH') : null;
 define('LOG_PATH', getenv('CI_LOG_PATH'));
 
 function pullMaster($payload){
+  
   //get env
   $pull_branch = getenv('CI_BRANCH_NAME');
+
   //set payload
   $branch = isset($payload['payload']['branch'])? $payload['payload']['branch'] : null;
   $subject = isset($payload['payload']['all_commit_details'][0]['subject'])? $payload['payload']['all_commit_details'][0]['subject'] : null;
