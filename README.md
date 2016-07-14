@@ -20,6 +20,11 @@
     SetEnv CI_BRANCH_NAME master #対象ブランチ
     SetEnv CI_LOG_PATH logs/ #ログ保存先パス
 
+##pull.sh
+    #!/bin/sh
+    cd /path/to/file
+    git pull origin master
+
 ##php.ini
 環境変数を使えるようにphp.iniの設定変更
 
