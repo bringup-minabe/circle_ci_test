@@ -16,7 +16,7 @@ function pullMaster($payload){
   $subject = isset($payload['payload']['all_commit_details'][0]['subject'])? $payload['payload']['all_commit_details'][0]['subject'] : null;
   
   if ($branch === $pull_branch){
-      `sudo -u deploy sh /home/deploy/pull.sh`;
+      `sudo -u deployer sh /home/deployer/pull.sh`;
       file_put_contents(LOG_PATH.'hook.log', date("[Y-m-d H:i:s]")." ".$_SERVER['REMOTE_ADDR']." git pulled: ".$subject."\n", FILE_APPEND|LOCK_EX);
   }
 }
@@ -87,7 +87,7 @@ function triggerEvent($payload){
 switch($mode){
   case 'debug':
     echo "debug mode";
-    `sudo -u deploy sh /home/deploy/test1.sh`;
+    `sudo -u deployer sh /home/deployer/test1.sh`;
     file_put_contents(LOG_PATH.'hook.log', date("[Y-m-d H:i:s]")." ".$_SERVER['REMOTE_ADDR']." git pulled: debug mode\n", FILE_APPEND|LOCK_EX);
   break;
 
