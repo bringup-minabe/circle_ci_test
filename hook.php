@@ -94,6 +94,5 @@ switch($mode){
     checkSecret($hookSecret);
     checkContentType();
     $payload = json_decode(getJson(), true);
-    file_put_contents(LOG_PATH.'hook.log', getJson()."\n", FILE_APPEND|LOCK_EX);
     triggerEvent($payload);
 }
